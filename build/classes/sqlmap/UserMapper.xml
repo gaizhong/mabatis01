@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 写Sql语句   -->
+<mapper namespace="user">
+	<!-- id 查用户 -->
+	<select id="selectUserById" parameterType="Integer" resultType="com.itheima.mybatis.pojo.User">
+	select * from  User where id =#{id}
+	</select>
+	
+	<select id="selectUserByName" parameterType="String" resultType="com.itheima.mybatis.pojo.User">
+	select * from  User where username like "%"#{id}"%"
+	
+	<!-- select * from  User where username like '%${value}%' -->
+	</select>
+	
+	
+	<insert id="insertUser" parameterType="com.itheima.mybatis.pojo.User">
+	<!-- order 和数据库相关  Oracle  的是before -->
+	<selectKey keyProperty="id" resultType="Integer" order="AFTER">	
+	<!-- mysql 提供的 -->
+	select LAST_INSERT_ID()
+	</selectKey>
+	
+	insert into User(username,id) 
+	  values(#{username},#{id})
+	
+	</insert>
+	<update id="updateUser" parameterType="com.itheima.mybatis.pojo.User">
+	update User set username=#{username},sex=#{sex} where id =#{id}
+	
+	</update>
+	
+	
+</mapper>
