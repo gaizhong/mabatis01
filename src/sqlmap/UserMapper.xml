@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 写Sql语句   -->
 <mapper namespace="com.itheima.mybatis.mapper.UserMapper">
 	<!-- id 查用户 -->
-	<select id="selectUserById" parameterType="Integer" resultType="com.itheima.mybatis.pojo.User">
+	<select id="selectUserById" parameterType="Integer" resultType="User">
 	select * from  User where id =#{id}
 	</select>
 	

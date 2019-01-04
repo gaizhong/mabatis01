@@ -6,7 +6,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <properties resource="jdbc.properties"/>
 
-
+<typeAliases>
+	<typeAlias type="com.itheima.mybatis.pojo.User" alias="User"/>
+</typeAliases>
 
 
 
